@@ -4,3 +4,5 @@ linha 3 -  ramo1
 linha 4 - ramo1
 linha adicional realizando teste para criar branches, commitar e fazer o push com o vscode
 nova linha adicionada para teste
+mais uma linha adicionada para correção no main
+mais uma linha
