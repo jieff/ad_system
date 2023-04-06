@@ -29,6 +29,10 @@ export class CompanyService {
     return this.companyRepository.find();
   }
 
+  findOneByEmail(username: string) {
+    return this.companyRepository.findOneBy({ email: username });
+  }
+
   findOne(id: number) {
     return this.companyRepository.findOneBy({id:id})
   }
