@@ -722,17 +722,17 @@
     "tslib" "2.5.0"
     "uid" "2.0.1"
 
-"@nestjs/core@^8.0.0 || ^9.0.0", "@nestjs/core@^9.0.0":
-  "integrity" "sha512-Qe0ZjJo7bOlfudn7KHLppYrt5i4k1nR1+9d5ppYat2bb5knCIT4kIqblj666n+22/2zvsHRiTo015cLyLKsLRQ=="
-  "resolved" "https://registry.npmjs.org/@nestjs/core/-/core-9.3.12.tgz"
-  "version" "9.3.12"
+"@nestjs/core@^8.0.0 || ^9.0.0", "@nestjs/core@^9.0.0", "@nestjs/core@^9.4.0":
+  "integrity" "sha512-yTLryCgFD0462wPe4HIzhyTcDgibt8Stfwb5YzcX7Ma0NM4m8uBIpcPG109KBubp8ZmV85e5mw4rl20qLQQVsQ=="
+  "resolved" "https://registry.npmjs.org/@nestjs/core/-/core-9.4.0.tgz"
+  "version" "9.4.0"
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     "fast-safe-stringify" "2.1.1"
     "iterare" "1.2.1"
     "path-to-regexp" "3.2.0"
     "tslib" "2.5.0"
-    "uid" "2.0.1"
+    "uid" "2.0.2"
 
 "@nestjs/jwt@^10.0.3":
   "integrity" "sha512-WO8MI3uEMOFKpbO+SAg6l4aRCr+9KvaL+raFMZaXuEUDphXek6pqdox+4tex9242pNSJUA0trfAMaiy/yVrXQg=="
@@ -5441,6 +5441,13 @@
   "integrity" "sha512-PF+1AnZgycpAIEmNtjxGBVmKbZAQguaa4pBUq6KNaGEcpzZ2klCNZLM34tsjp76maN00TttiiUf6zkIBpJQm2A=="
   "resolved" "https://registry.npmjs.org/uid/-/uid-2.0.1.tgz"
   "version" "2.0.1"
+  dependencies:
+    "@lukeed/csprng" "^1.0.0"
+
+"uid@2.0.2":
+  "integrity" "sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g=="
+  "resolved" "https://registry.npmjs.org/uid/-/uid-2.0.2.tgz"
+  "version" "2.0.2"
   dependencies:
     "@lukeed/csprng" "^1.0.0"
 

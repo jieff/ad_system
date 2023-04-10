@@ -3,6 +3,8 @@ import { CompanyService } from './company.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { Roles } from '../rule/roles.decorator';
+import { Role } from '../rule/role.enum'
 
 @ApiTags('Cadastra Empresas Administradora do Sistema')
 @Controller('company')
@@ -11,6 +13,7 @@ export class CompanyController {
 
   @ApiOperation({ summary: 'Rota para cadastrar Empresa ADM' })
   @Post()
+  @Roles(Role.Admin)
   create(@Body() createCompanyDto: CreateCompanyDto) {
     return this.companyService.create(createCompanyDto);
   }
