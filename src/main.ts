@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors()
   const config = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('API description')
+    .setDescription('API AD System')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
