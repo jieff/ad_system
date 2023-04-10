@@ -43,7 +43,13 @@ export class CompanyService {
       throw new Error(`Company with ID ${id} not found`);
     }
   
-    const updatedCompany = this.companyRepository.merge(company, updateCompanyDto);
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(updateCompanyDto.password, salt);
+  
+    const updatedCompany = this.companyRepository.merge(company, {
+      ...updateCompanyDto,
+      password: hashedPassword, // substitui a senha não criptografada pelo hash
+    });
   
     return this.companyRepository.save(updatedCompany);
   }
