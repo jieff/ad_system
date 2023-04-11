@@ -14,5 +14,8 @@ export class Company {
   @Column()
   password: string;
 
+  @Column()
+  role: string;
+
 }
 

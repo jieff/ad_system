@@ -7,9 +7,13 @@ import { config } from '../ormconfig';
 import { CompanyModule } from './company/company.module';
 import { AuthModule } from './auth/auth.module';
 
-
 @Module({
-  imports: [UsersModule, TypeOrmModule.forRoot(config), CompanyModule, AuthModule],
+  imports: [
+    UsersModule,
+    TypeOrmModule.forRoot(config),
+    CompanyModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

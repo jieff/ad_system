@@ -21,6 +21,7 @@ export class CompanyService {
     
     company.name = createCompanyDto.name;
     company.email =  createCompanyDto.email;
+    company.role = createCompanyDto.role;
     company.password = bcrypt.hashSync(createCompanyDto.password, salt);
     return this.companyRepository.save(company);
   }
