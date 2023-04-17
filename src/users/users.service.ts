@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { Plans } from '../plans/entities/plan.entity'
 
 
 
@@ -13,8 +14,10 @@ export class UsersService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    @InjectRepository(Plans)
+    private planRepository: Repository<Plans>
   ) {}
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
     const user = new User();
     user.razaoSocial = createUserDto.razaoSocial;
     user.nomeFantasia = createUserDto.nomeFantasia;
@@ -29,6 +32,10 @@ export class UsersService {
     user.telefone = createUserDto.telefone;
     user.site = createUserDto.site;
     user.email = createUserDto.email;
+
+    const plan = await this.planRepository.findOne({ where: { id: createUserDto.planId } });
+
+    user.plans = plan;
   
     return this.userRepository.save(user);
   }
@@ -61,4 +68,18 @@ export class UsersService {
   remove(id: number) {
     return this.userRepository.delete(id);
   }
+
+  async findOneWithPlans(id: number) {
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.plans', 'plans')
+      .where('user.id = :id', { id })
+      .getOne();
+  
+    return user;
+  }
+  
+  
+  
+
 }

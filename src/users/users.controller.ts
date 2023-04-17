@@ -21,11 +21,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @ApiOperation({ summary: 'Rota para listar uma empresa por id' })
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
-  }
+  //@ApiOperation({ summary: 'Rota para listar uma empresa por id' })
+  //@Get(':id')
+  //findOne(@Param('id') id: string) {
+  //  return this.usersService.findOne(+id);
+  //}
 
   @ApiOperation({ summary: 'Rota para atualizar dados de uma empresa por id' })
   @Patch(':id')
@@ -38,4 +38,10 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
+
+  @Get(':id')
+  async findOneWithPlans(@Param('id') id: string) {
+  return this.usersService.findOneWithPlans(+id);
+}
+
 }
