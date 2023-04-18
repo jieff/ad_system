@@ -7,6 +7,7 @@ import { config } from '../ormconfig';
 import { CompanyModule } from './company/company.module';
 import { AuthModule } from './auth/auth.module';
 import { PlansModule } from './plans/plans.module';
+import { PeopleModule } from './people/people.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { PlansModule } from './plans/plans.module';
     CompanyModule,
     AuthModule,
     PlansModule,
+    PeopleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

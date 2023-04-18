@@ -35,7 +35,7 @@ export class PlansService {
   async update(id: number, updatePlanDto: UpdatePlanDto) {
     const plan = await this.plansRepository.findOneBy({id:id});
     if(!plan){
-      throw new Error('Plan with ID ${id} not found');
+      return ({msg: `Plan with ID ${id} not found`});
     }
 
     const updatePlan = this.plansRepository.merge(plan, updatePlanDto);
