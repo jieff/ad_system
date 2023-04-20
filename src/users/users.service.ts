@@ -17,6 +17,7 @@ export class UsersService {
     @InjectRepository(Plans)
     private planRepository: Repository<Plans>
   ) {}
+  
   async create(createUserDto: CreateUserDto) {
     const user = new User();
     user.razaoSocial = createUserDto.razaoSocial;

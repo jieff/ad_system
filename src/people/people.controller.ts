@@ -3,6 +3,7 @@ import { PeopleService } from './people.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
 
+
 @Controller('people')
 export class PeopleController {
   constructor(private readonly peopleService: PeopleService) {}
@@ -20,6 +21,11 @@ export class PeopleController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.peopleService.findOne(+id);
+  }
+
+  @Get('/withDepartment/:id')
+  async findOneWithDepartment(@Param('id') id: string) {
+    return this.peopleService.findOneWithDepartment(Number(id));
   }
 
   @Patch(':id')

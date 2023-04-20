@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Department } from 'src/departments/entities/department.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Person {
@@ -32,6 +33,9 @@ export class Person {
 
     @Column()
     facebook: string;
+
+    @ManyToOne(() => Department, department => department.persons)
+    department: Department;
 
 
 }
