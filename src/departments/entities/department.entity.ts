@@ -10,6 +10,9 @@ export class Department {
     @Column()
     name: string;
 
+    @Column()
+    personId: number;
+
 
     @OneToMany(() => Person, person => person.department)
     persons: Person[];

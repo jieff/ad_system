@@ -1,12 +1,20 @@
 import { Injectable } from '@nestjs/common';
+
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
+import { CreatePositionDto } from 'src/positions/dto/create-position.dto';
+
+import { Department } from 'src/departments/entities/department.entity';
 import { Person } from './entities/person.entity';
+import { Position } from '../positions/entities/position.entity'
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
-import { Department } from 'src/departments/entities/department.entity';
-import { NotFoundException } from '@nestjs/common';
+import { CreateDepartmentDto } from 'src/departments/dto/create-department.dto';
+
+
+
 
 
 @Injectable()
@@ -16,18 +24,18 @@ export class PeopleService {
     private personRepository: Repository<Person>,
     @InjectRepository(Department) // Injetando o DepartmentRepository
     private departmentRepository: Repository<Department>,
+    @InjectRepository(Position)
+    private readonly positionRepository: Repository<Position>
   ) {}
 
 
-  async findOneWithDepartment(id: number) {
+  async findOneWithDepartmentAndPosition(id: number) {
     return this.personRepository.findOne({
       where: { id },
-      relations: ['department'],
+      relations: ['department', 'position'],
     });
   }
   
-
-
   async create(createPersonDto: CreatePersonDto) {
     const salt = bcrypt.genSaltSync(10);
     const person = new Person();
@@ -42,16 +50,25 @@ export class PeopleService {
     person.linkedin = createPersonDto.linkedIn;
     person.facebook = createPersonDto.facebook;
 
+
     const department = await this.departmentRepository.findOne({ where: { id: createPersonDto.departmentId } });
     
+    const position = await this.positionRepository.findOne({ where: { id: createPersonDto.positionId } });
+
     person.department = department;
+    person.position = position;
 
     return this.personRepository.save(person);
   }
 
-  
   findAll() {
     return this.personRepository.find()
+  }
+  
+  findAllWithDepartmentAndPosition() {
+    return this.personRepository.find({
+      relations: ['department', 'position'],
+    })
   }
 
   findOne(id: number) {

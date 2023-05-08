@@ -1,5 +1,6 @@
 import { Department } from 'src/departments/entities/department.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Position } from '../../positions/entities/position.entity'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 
 @Entity()
 export class Person {
@@ -34,8 +35,19 @@ export class Person {
     @Column()
     facebook: string;
 
-    @ManyToOne(() => Department, department => department.persons)
+    @ManyToOne(() => Position)
+    @JoinColumn({ name: 'positionId' })
+    position: Position;
+
+    @ManyToOne(() => Department)
+    @JoinColumn({ name: 'departmentId' })
     department: Department;
+
+    //@ManyToOne(() => Department, department => department.persons)
+    //department: Department;
+//
+    //@ManyToOne(() => Position, position => position.persons)
+    //position: Position;
 
 
 }

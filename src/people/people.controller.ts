@@ -23,9 +23,15 @@ export class PeopleController {
     return this.peopleService.findOne(+id);
   }
 
-  @Get('/withDepartment/:id')
+ @Get('/findAllWithDepartmentAndPosition')
+ async findAllWithDepartmentAndPosition() {
+   return this.peopleService.findAllWithDepartmentAndPosition();
+ }
+
+  
+  @Get('/findOneWithDepartmentAndPosition/:id')
   async findOneWithDepartment(@Param('id') id: string) {
-    return this.peopleService.findOneWithDepartment(Number(id));
+    return this.peopleService.findOneWithDepartmentAndPosition(Number(id));
   }
 
   @Patch(':id')

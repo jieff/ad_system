@@ -43,5 +43,9 @@ export class CreatePersonDto {
     @IsNotEmpty()
     departmentId: number;
 
+    @IsNumber()
+    @IsNotEmpty()
+    positionId: number;
+
 
 }
